@@ -1,12 +1,11 @@
-### CS430: Project 3 ###
+### CS430: Project 4 ###
 
 Developer: Itreau Bigsby 
 Email: ib233@nau.edu
 
 ## Purpose ##
 
-The purpose of this project is to extend our raycaster so that it will implement shading. We are adding a "light" object to our input 
-capabilities as well as the ability to adjust the way shading affects the colors of our objects.
+The purpose of this project is to add reflection and refraction capabilities to our raytracer program. The program needs to accept the additional parameters required for displaying reflection/refraction and generate output files that render these properties.
 
 ## Contents ##
 
@@ -19,9 +18,9 @@ The contents of the project repository are as follows:
 
 Steps to use: 
 
-1. Navigate to the directory containing the source code.
-2. Type "make" into a command line interface.
-3. Type ./raycast (width) (height) (in.csv) (out.ppm) into your command line with appropriate input variables to ouput a raycast image.
+1. 
+2. 
+3. 
 
 ## Known Issues ##
 
