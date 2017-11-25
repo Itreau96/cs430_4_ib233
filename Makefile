@@ -3,12 +3,12 @@
 CC = gcc
 CFLAGS = -g -Wall
 
-all: raycast
+all: raytrace
 
 # Create raycaster
-raycast: raycast.c raycast.h ib_3dmath.h parser.c parser.h
-	$(CC) $(CFLAGS) raycast.c raycast.h ib_3dmath.h parser.c parser.h -o raycast -lm
+raytrace: raycast.c raycast.h ib_3dmath.h parser.c parser.h
+	$(CC) $(CFLAGS) raycast.c raycast.h ib_3dmath.h parser.c parser.h -o raytrace -lm
 
 # Create clean
 clean:
-	-rm -rf raycast *~
+	-rm -rf raytrace *~
