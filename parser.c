@@ -200,6 +200,10 @@ void get_sphere(obj *cur_obj, FILE *file, char *c, int *result)
    bool dr_found = FALSE;
    bool dg_found = FALSE;
    bool db_found = FALSE;
+   
+   bool reflect_found = FALSE;
+   bool refract_found = FALSE;
+   bool ior_found = FALSE;
 
    bool radius_found = FALSE;
    int prop_count = 0;
@@ -479,11 +483,65 @@ void get_sphere(obj *cur_obj, FILE *file, char *c, int *result)
          // Set property value
          cur_obj->radius = atof(value);
 
-         // Make sure radius is between 0 and 1
+         // Make sure radius is greater than 0
          if (atof(value) >= 0)
          {
             // Set boolean value
             radius_found = TRUE;
+         }
+
+         // Increment the prop count
+         prop_count++;
+      }
+      else if (strcmp(property, "reflectivity") == 0)
+      {
+         // Get property value
+         get_next_word(value, VALUE_SEP, VALUE_LEN, file, c);
+
+         // Set property value
+         cur_obj->reflectivity = atof(value);
+
+         // Make sure radius is between 0 and 1
+         if (atof(value) >= 0 && atof(value) <= 1)
+         {
+            // Set boolean value
+            reflect_found = TRUE;
+         }
+
+         // Increment the prop count
+         prop_count++;
+      }
+      else if (strcmp(property, "refractivity") == 0)
+      {
+         // Get property value
+         get_next_word(value, VALUE_SEP, VALUE_LEN, file, c);
+
+         // Set property value
+         cur_obj->refractivity = atof(value);
+
+         // Make sure radius is between 0 and 1
+         if (atof(value) >= 0 && atof(value) <= 1)
+         {
+            // Set boolean value
+            refract_found = TRUE;
+         }
+
+         // Increment the prop count
+         prop_count++;
+      }
+      else if (strcmp(property, "ior") == 0)
+      {
+         // Get property value
+         get_next_word(value, VALUE_SEP, VALUE_LEN, file, c);
+
+         // Set property value
+         cur_obj->refractivity = atof(value);
+
+         // Make sure radius is greater than 0
+         if (atof(value) >= 0)
+         {
+            // Set boolean value
+            ior_found = TRUE;
          }
 
          // Increment the prop count
@@ -505,6 +563,8 @@ void get_sphere(obj *cur_obj, FILE *file, char *c, int *result)
        x_found == TRUE && y_found == TRUE && z_found == TRUE &&
        dr_found == TRUE && dg_found == TRUE && db_found == TRUE &&
        sr_found == TRUE && sg_found == TRUE && sb_found == TRUE &&
+       ((reflect_found == TRUE && refract_found == TRUE && ior_found == TRUE) ||
+        (reflect_found == FALSE && refract_found == FALSE && ior_found == FALSE)) &&
        radius_found == TRUE && *result != INPUT_INVALID && prop_count <= SPHERE_VAL_COUNT)
    {
       *result = RUN_SUCCESS;
@@ -541,6 +601,10 @@ void get_plane(obj *cur_obj, FILE *file, char *c, int *result)
    bool dr_found = FALSE;
    bool dg_found = FALSE;
    bool db_found = FALSE;
+   
+   bool reflect_found = FALSE;
+   bool refract_found = FALSE;
+   bool ior_found = FALSE;
 
    int prop_count = 0;
 
@@ -873,6 +937,60 @@ void get_plane(obj *cur_obj, FILE *file, char *c, int *result)
          // Increment property count if all found
          prop_count++;
       }
+      else if (strcmp(property, "reflectivity") == 0)
+      {
+         // Get property value
+         get_next_word(value, VALUE_SEP, VALUE_LEN, file, c);
+
+         // Set property value
+         cur_obj->reflectivity = atof(value);
+
+         // Make sure radius is between 0 and 1
+         if (atof(value) >= 0 && atof(value) <= 1)
+         {
+            // Set boolean value
+            reflect_found = TRUE;
+         }
+
+         // Increment the prop count
+         prop_count++;
+      }
+      else if (strcmp(property, "refractivity") == 0)
+      {
+         // Get property value
+         get_next_word(value, VALUE_SEP, VALUE_LEN, file, c);
+
+         // Set property value
+         cur_obj->refractivity = atof(value);
+
+         // Make sure radius is between 0 and 1
+         if (atof(value) >= 0 && atof(value) <= 1)
+         {
+            // Set boolean value
+            refract_found = TRUE;
+         }
+
+         // Increment the prop count
+         prop_count++;
+      }
+      else if (strcmp(property, "ior") == 0)
+      {
+         // Get property value
+         get_next_word(value, VALUE_SEP, VALUE_LEN, file, c);
+
+         // Set property value
+         cur_obj->refractivity = atof(value);
+
+         // Make sure radius is greater than 0
+         if (atof(value) >= 0)
+         {
+            // Set boolean value
+            ior_found = TRUE;
+         }
+
+         // Increment the prop count
+         prop_count++;
+      }
       else
       {
          *result = INPUT_INVALID;
@@ -891,6 +1009,8 @@ void get_plane(obj *cur_obj, FILE *file, char *c, int *result)
        dr_found == TRUE && dg_found == TRUE && db_found == TRUE &&
        ((sr_found == TRUE && sg_found == TRUE && sb_found == TRUE) ||
        (sr_found == FALSE && sg_found == FALSE && sb_found == FALSE)) &&
+       ((reflect_found == TRUE && refract_found == TRUE && ior_found == TRUE) ||
+        (reflect_found == FALSE && refract_found == FALSE && ior_found == FALSE)) &&
        *result != INPUT_INVALID && prop_count <= SPHERE_VAL_COUNT)
    {
       *result = RUN_SUCCESS;

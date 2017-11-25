@@ -46,6 +46,9 @@ struct obj
    float radial_a0;
    float radial_a1;
    float radial_a2;
+   float reflectivity;
+   float refractivity;
+   float ior;
    float theta;
    float angular_a0;
    ib_v3 direction;

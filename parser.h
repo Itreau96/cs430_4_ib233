@@ -14,8 +14,8 @@
 #define VALUE_LEN 20
 
 #define CAM_VAL_COUNT 2
-#define SPHERE_VAL_COUNT 5
-#define PLANE_VAL_COUNT 5
+#define SPHERE_VAL_COUNT 8
+#define PLANE_VAL_COUNT 8
 #define LIGHT_VAL_COUNT 8
 
 #define WIDTH_INVALID 1
