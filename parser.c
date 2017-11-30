@@ -535,7 +535,7 @@ void get_sphere(obj *cur_obj, FILE *file, char *c, int *result)
          get_next_word(value, VALUE_SEP, VALUE_LEN, file, c);
 
          // Set property value
-         cur_obj->refractivity = atof(value);
+         cur_obj->ior = atof(value);
 
          // Make sure radius is greater than 0
          if (atof(value) >= 0)
@@ -979,7 +979,7 @@ void get_plane(obj *cur_obj, FILE *file, char *c, int *result)
          get_next_word(value, VALUE_SEP, VALUE_LEN, file, c);
 
          // Set property value
-         cur_obj->refractivity = atof(value);
+         cur_obj->ior = atof(value);
 
          // Make sure radius is greater than 0
          if (atof(value) >= 0)

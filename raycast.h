@@ -16,6 +16,9 @@
 
 #define CENTER_XY 0.0
 
+#define SHINE_DEFAULT 20.0
+#define MAX_RECURSION 7
+
 // Type definitions
 typedef int bool;
 typedef struct rgb rgb;
